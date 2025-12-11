@@ -1,0 +1,28 @@
+PLAY ANALYSIS: Jordan Love to Dontayvion Wicks 17-yd (Hitch)
+============================================================
+Actual Outcome: COMPLETE
+Total Frames: 11
+
+THE READ: Frame 0 (0.0% into play)
+
+PROBABILITY SUMMARY:
+  Start: Complete=86.7%, Incomplete=11.2%, INT=2.1%
+  End:   Complete=62.3%, Incomplete=30.4%, INT=7.3%
+
+KEY MOMENTS (biggest probability swings):
+  Frame 6: 17.4% swing - Complete=74.1%, Incomplete=22.7%, INT=3.3%
+  Frame 7: 20.4% swing - Complete=53.6%, Incomplete=39.6%, INT=6.8%
+  Frame 8: 14.8% swing - Complete=38.8%, Incomplete=50.9%, INT=10.3%
+  Frame 10: 20.1% swing - Complete=62.3%, Incomplete=30.4%, INT=7.3%
+
+TOP 10 MOST IMPORTANT FEATURES:
+  separation: 177483.07
+  receiver_to_catch_point: 128322.87
+  projected_separation_at_catch: 56128.63
+  ball_to_receiver: 56091.98
+  receiver_y: 31112.08
+  closing_speed: 29429.77
+  defender_to_catch_point: 27782.22
+  receiver_speed: 26911.78
+  receiver_x: 26745.22
+  receiver_defender_speed_diff: 26737.97

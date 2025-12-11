@@ -1,0 +1,6 @@
+category,play_folder,week,game,game_id,play_id,outcome,drama_score,probability_swing,had_lead_change,bifurcation_timing,total_frames,entropy_drop
+1. High Drama Opener,038_Q4_1253_CHI,Week_01,GB_vs_CHI,2023091008,3377,Interception,3.0,0.0,True,0.0,10,0.1463002730789711
+2. Dramatic Completion,043_Q4_457_CHI,Week_01,GB_vs_CHI,2023091008,3923,Complete,3.0,0.0,True,0.0,7,0.0368958725053245
+3. Dramatic Interception,038_Q4_1253_CHI,Week_01,GB_vs_CHI,2023091008,3377,Interception,3.0,0.0,True,0.0,10,0.1463002730789711
+4. Late Suspense,021_Q2_318_CAR,Week_18,TB_vs_CAR,2024010705,1596,Complete,1.0,0.0265069334521777,False,1.0,9,-0.0683179062255112
+6. Uncertainty Resolved,029_Q2_020_DET,Week_12,GB_vs_DET,2023112300,2157,Incomplete,2.568869417876694,0.3377580866296497,True,0.16,26,1.4501399270942308

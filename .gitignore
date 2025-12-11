@@ -1,0 +1,62 @@
+# Large data files
+organized_plays/
+plays_by_id/
+114239_nfl_competition_files_published_analytics_final/
+all_frame_features.csv
+bifurcation_results.csv
+
+# Model files - KEEP .lgb files for reproducibility
+# Only exclude large intermediate files
+models/*.pkl
+models/*.joblib
+models/*_checkpoint.lgb
+models/temp/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Large video/media files
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.webm
+*.gif
+broadcast_viz/**/*.gif
+broadcast_viz/**/*.mp4
+broadcast_viz/**/*.webm
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Large PNG visualizations (keep smaller ones)
+bifurcation_example_trajectories.png
+bifurcation_method_comparison.png
+bifurcation_m3_vs_m6.png
+
+# Temporary/intermediate files
+*.tmp
+*.bak
+*.log

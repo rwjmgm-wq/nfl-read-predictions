@@ -1,0 +1,42 @@
+PLAY ANALYSIS: Derek Carr 51-yd Bomb to Rashid Shaheed (Upset)
+============================================================
+Actual Outcome: COMPLETE
+Total Frames: 27
+
+THE READ: Frame 7 (25.9% into play)
+
+PROBABILITY SUMMARY:
+  Start: Complete=10.5%, Incomplete=88.7%, INT=0.8%
+  End:   Complete=87.6%, Incomplete=12.1%, INT=0.3%
+
+KEY MOMENTS (biggest probability swings):
+  Frame 1: 13.8% swing - Complete=23.0%, Incomplete=74.9%, INT=2.1%
+  Frame 2: 11.3% swing - Complete=33.5%, Incomplete=63.6%, INT=2.9%
+  Frame 3: 9.5% swing - Complete=42.6%, Incomplete=54.1%, INT=3.3%
+  Frame 4: 5.3% swing - Complete=47.9%, Incomplete=49.1%, INT=2.9%
+  Frame 5: 5.9% swing - Complete=53.1%, Incomplete=43.3%, INT=3.6%
+  Frame 9: 6.9% swing - Complete=48.9%, Incomplete=47.7%, INT=3.4%
+  Frame 10: 7.2% swing - Complete=41.7%, Incomplete=54.4%, INT=3.8%
+  Frame 13: 6.8% swing - Complete=31.1%, Incomplete=65.6%, INT=3.3%
+  Frame 14: 5.5% swing - Complete=26.7%, Incomplete=71.1%, INT=2.2%
+  Frame 15: 7.1% swing - Complete=33.8%, Incomplete=64.9%, INT=1.3%
+  Frame 16: 11.0% swing - Complete=44.8%, Incomplete=54.2%, INT=1.0%
+  Frame 17: 6.5% swing - Complete=51.3%, Incomplete=47.8%, INT=1.0%
+  Frame 20: 6.1% swing - Complete=54.7%, Incomplete=44.5%, INT=0.7%
+  Frame 21: 6.6% swing - Complete=61.4%, Incomplete=37.9%, INT=0.7%
+  Frame 22: 5.7% swing - Complete=67.1%, Incomplete=32.3%, INT=0.6%
+  Frame 23: 5.8% swing - Complete=72.9%, Incomplete=26.6%, INT=0.5%
+  Frame 25: 5.2% swing - Complete=81.9%, Incomplete=17.8%, INT=0.3%
+  Frame 26: 5.7% swing - Complete=87.6%, Incomplete=12.1%, INT=0.3%
+
+TOP 10 MOST IMPORTANT FEATURES:
+  separation: 177483.07
+  receiver_to_catch_point: 128322.87
+  projected_separation_at_catch: 56128.63
+  ball_to_receiver: 56091.98
+  receiver_y: 31112.08
+  closing_speed: 29429.77
+  defender_to_catch_point: 27782.22
+  receiver_speed: 26911.78
+  receiver_x: 26745.22
+  receiver_defender_speed_diff: 26737.97

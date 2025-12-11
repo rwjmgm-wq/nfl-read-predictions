@@ -1,0 +1,155 @@
+"""
+Generate Precision-Recall curves for all three outcomes.
+"""
+
+import pandas as pd
+import numpy as np
+import lightgbm as lgb
+import pickle
+from pathlib import Path
+from sklearn.metrics import precision_recall_curve, average_precision_score
+import matplotlib.pyplot as plt
+
+BASE_DIR = Path(__file__).parent
+MODEL_DIR = BASE_DIR / "models"
+
+def main():
+    # Load the features
+    print("Loading features...")
+    df = pd.read_csv(BASE_DIR / "all_frame_features.csv")
+
+    # Load the model
+    print("Loading model...")
+    model = lgb.Booster(model_file=str(MODEL_DIR / "completion_model.lgb"))
+
+    with open(MODEL_DIR / "feature_names.pkl", 'rb') as f:
+        feature_names = pickle.load(f)
+
+    # Prepare data (same as training)
+    exclude_cols = ['frame_id', 'week', 'game', 'play_folder', 'play_path',
+                    'outcome', 'game_id', 'ball_catchable', 'contested']
+
+    X = df[[col for col in df.columns if col not in exclude_cols]].copy()
+    X = X.fillna(X.median())
+
+    # Ensure correct column order
+    X = X[feature_names]
+
+    outcome_map = {'I': 0, 'C': 1, 'IN': 2}
+    y = df['outcome'].map(outcome_map)
+
+    # Use game-based split (same as training)
+    from sklearn.model_selection import GroupKFold
+    groups = df['game_id']
+    gkf = GroupKFold(n_splits=5)
+    splits = list(gkf.split(X, y, groups))
+    train_idx, test_idx = splits[0]
+
+    X_test = X.iloc[test_idx]
+    y_test = y.iloc[test_idx]
+
+    print(f"Test set size: {len(X_test)} frames")
+
+    # Get predictions
+    print("Generating predictions...")
+    y_probs = model.predict(X_test)
+
+    # Colors for each outcome
+    colors = {
+        'Complete': '#00CED1',      # Cyan
+        'Incomplete': '#FF4444',    # Red
+        'Interception': '#FF00FF'   # Magenta
+    }
+
+    outcome_names = ['Incomplete', 'Complete', 'Interception']
+
+    # =============================================================================
+    # INDIVIDUAL PR CURVES (3 subplots)
+    # =============================================================================
+
+    fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+
+    for idx, (label_idx, label_name) in enumerate([(0, 'Incomplete'), (1, 'Complete'), (2, 'Interception')]):
+        ax = axes[idx]
+
+        # Create binary labels
+        y_binary = (y_test == label_idx).astype(int)
+        y_pred_probs = y_probs[:, label_idx]
+
+        # Calculate PR curve
+        precision, recall, thresholds = precision_recall_curve(y_binary, y_pred_probs)
+        pr_auc = average_precision_score(y_binary, y_pred_probs)
+        baseline = y_binary.mean()
+
+        # Plot PR curve
+        ax.plot(recall, precision, color=colors[label_name], linewidth=3,
+                label=f'{label_name} (PR-AUC = {pr_auc:.4f})')
+
+        # Plot baseline
+        ax.axhline(y=baseline, color='gray', linestyle='--', linewidth=2,
+                   label=f'Baseline (No Skill) = {baseline:.4f}')
+
+        # Fill area under curve
+        ax.fill_between(recall, precision, alpha=0.2, color=colors[label_name])
+
+        # Formatting
+        ax.set_xlabel('Recall', fontsize=12, fontweight='bold')
+        ax.set_ylabel('Precision', fontsize=12, fontweight='bold')
+        ax.set_title(f'{label_name}\nPR-AUC = {pr_auc:.4f} (Baseline = {baseline:.4f})',
+                     fontsize=14, fontweight='bold')
+        ax.set_xlim([0, 1])
+        ax.set_ylim([0, 1.05])
+        ax.legend(fontsize=10, loc='best')
+        ax.grid(True, alpha=0.3)
+        ax.set_axisbelow(True)
+
+    plt.suptitle('Precision-Recall Curves by Outcome', fontsize=18, fontweight='bold', y=1.02)
+    plt.tight_layout()
+    plt.savefig(BASE_DIR / "pr_curves_individual.png", dpi=300, bbox_inches='tight')
+    print(f"Saved: {BASE_DIR / 'pr_curves_individual.png'}")
+    plt.close()
+
+    # =============================================================================
+    # COMBINED PR CURVES (all on one plot)
+    # =============================================================================
+
+    fig, ax = plt.subplots(figsize=(10, 8))
+
+    for label_idx, label_name in [(0, 'Incomplete'), (1, 'Complete'), (2, 'Interception')]:
+        # Create binary labels
+        y_binary = (y_test == label_idx).astype(int)
+        y_pred_probs = y_probs[:, label_idx]
+
+        # Calculate PR curve
+        precision, recall, thresholds = precision_recall_curve(y_binary, y_pred_probs)
+        pr_auc = average_precision_score(y_binary, y_pred_probs)
+        baseline = y_binary.mean()
+
+        # Plot PR curve
+        ax.plot(recall, precision, color=colors[label_name], linewidth=3,
+                label=f'{label_name} (PR-AUC = {pr_auc:.4f})')
+
+        # Plot baseline as dotted line
+        ax.plot([0, 1], [baseline, baseline], color=colors[label_name],
+                linestyle=':', linewidth=2, alpha=0.5)
+
+    # Formatting
+    ax.set_xlabel('Recall', fontsize=14, fontweight='bold')
+    ax.set_ylabel('Precision', fontsize=14, fontweight='bold')
+    ax.set_title('Precision-Recall Curves: All Outcomes\n(Dotted lines show no-skill baselines)',
+                 fontsize=16, fontweight='bold', pad=20)
+    ax.set_xlim([0, 1])
+    ax.set_ylim([0, 1.05])
+    ax.legend(fontsize=12, loc='best')
+    ax.grid(True, alpha=0.3)
+    ax.set_axisbelow(True)
+
+    plt.tight_layout()
+    plt.savefig(BASE_DIR / "pr_curves_combined.png", dpi=300, bbox_inches='tight')
+    print(f"Saved: {BASE_DIR / 'pr_curves_combined.png'}")
+    plt.close()
+
+    print("\nDone! Generated PR curves.")
+
+if __name__ == "__main__":
+    main()

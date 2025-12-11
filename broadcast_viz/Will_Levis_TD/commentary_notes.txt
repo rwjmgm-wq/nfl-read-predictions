@@ -1,0 +1,28 @@
+PLAY ANALYSIS: Will Levis 61-yd TD to DeAndre Hopkins
+============================================================
+Actual Outcome: COMPLETE
+Total Frames: 28
+
+THE READ: Frame 3 (10.7% into play)
+
+PROBABILITY SUMMARY:
+  Start: Complete=27.6%, Incomplete=70.0%, INT=2.4%
+  End:   Complete=95.7%, Incomplete=4.2%, INT=0.1%
+
+KEY MOMENTS (biggest probability swings):
+  Frame 1: 23.1% swing - Complete=50.7%, Incomplete=47.4%, INT=1.9%
+  Frame 2: 16.5% swing - Complete=67.2%, Incomplete=31.2%, INT=1.7%
+  Frame 3: 13.2% swing - Complete=80.4%, Incomplete=18.1%, INT=1.5%
+  Frame 19: 5.4% swing - Complete=85.8%, Incomplete=11.9%, INT=2.3%
+
+TOP 10 MOST IMPORTANT FEATURES:
+  separation: 177483.07
+  receiver_to_catch_point: 128322.87
+  projected_separation_at_catch: 56128.63
+  ball_to_receiver: 56091.98
+  receiver_y: 31112.08
+  closing_speed: 29429.77
+  defender_to_catch_point: 27782.22
+  receiver_speed: 26911.78
+  receiver_x: 26745.22
+  receiver_defender_speed_diff: 26737.97
