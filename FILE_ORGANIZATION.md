@@ -27,7 +27,6 @@
 ### 📚 Want documentation?
 **Location:** `docs/` folder
 - **Submission guide:** `BIG_DATA_BOWL_SUBMISSION_GUIDE.md`
-- **Project context:** `PROJECT_CONTEXT.md`
 
 ---
 
@@ -69,12 +68,9 @@
 │   ├── add_supplementary.py       # Add supplementary data
 │   └── create_combined_tracking.py # Combine all tracking
 │
-├── 📂 docs/                       # Documentation (5 files)
+├── 📂 docs/                       # Documentation (2 files)
 │   ├── BIG_DATA_BOWL_SUBMISSION_GUIDE.md # ⭐ How to submit
-│   ├── PROJECT_CONTEXT.md          # Full project history
-│   ├── CLEANUP_SUMMARY.md          # What we cleaned
-│   ├── submission_example.md       # Example writeup
-│   └── cleanup_for_git.py          # Cleanup script
+│   └── cleanup_for_git.py          # Cleanup script (reference)
 │
 ├── 📂 models/                     # Trained models
 │   ├── completion_model.lgb       # ⭐ Main model (2.7MB)
@@ -148,7 +144,7 @@ python data_processing/organize_by_game.py
 - **Visualization:** 10 files (visualization/)
 - **Analysis:** 7 files (analysis/)
 - **Data Processing:** 5 files (data_processing/)
-- **Documentation:** 5 files (docs/)
+- **Documentation:** 2 files (docs/)
 - **Total Python files:** 30 files
 
 ---

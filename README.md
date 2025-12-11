@@ -45,9 +45,7 @@ This project uses machine learning and tracking data to:
 │   └── merge_player_tracking.py  # Merge tracking files
 │
 ├── docs/                         # Documentation
-│   ├── BIG_DATA_BOWL_SUBMISSION_GUIDE.md
-│   ├── PROJECT_CONTEXT.md
-│   └── CLEANUP_SUMMARY.md
+│   └── BIG_DATA_BOWL_SUBMISSION_GUIDE.md
 │
 ├── models/                       # Trained models
 │   └── completion_model.lgb      # LightGBM model (2.7MB)
